@@ -15,9 +15,9 @@ class CreatePenerbitsTable extends Migration
     {
         Schema::create('penerbits', function (Blueprint $table) {
             $table->id();
-            $table->string('kode');
-            $table->string('nama');
-            $table->string('verif')->nullable();
+            $table->string('kode',125);
+            $table->string('nama',50);
+            $table->string('verif',125)->nullable();
             $table->timestamps();
         });
     }

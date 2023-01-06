@@ -14,4 +14,8 @@ class Kategori extends Model
         'nama',
         'verif'
     ];
+
+    public function bukus() {
+        return $this->hasMany(Buku::class);
+    }
 }

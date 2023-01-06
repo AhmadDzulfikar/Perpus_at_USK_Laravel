@@ -16,7 +16,7 @@ class CreatePeminjamenTable extends Migration
         Schema::create('peminjamen', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id');
-            $table->foreignId('buku_id');
+            $table->foreignId('buku_id')->constrained();
             $table->dateTime('tgl_peminjaman');
             $table->dateTime('tgl_pengembalian');
             $table->enum('kondisi_buku_saat_dipinjam', ['baik', 'rusak']);

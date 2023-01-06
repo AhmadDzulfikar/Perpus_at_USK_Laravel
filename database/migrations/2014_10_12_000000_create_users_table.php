@@ -15,17 +15,17 @@ class CreateUsersTable extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->string('kode');
-            $table->char('nis')->nullable();
-            $table->string('fullname');
-            $table->string('username');
-            $table->string('password');
-            $table->string('kelas')->nullable();
-            $table->string('alamat')->nullable();
-            $table->string('verif')->nullable();
+            $table->string('kode',25);
+            $table->char('nis',20)->nullable();
+            $table->string('fullname',125);
+            $table->string('username')->unique();
+            $table->text('password');
+            $table->string('kelas',50)->nullable();
+            $table->string('alamat',225)->nullable();
+            $table->string('verif',50)->nullable();
             $table->enum('role', ['admin', 'user']);
-            $table->date('join_date');
-            $table->date('terakhir_login');
+            $table->dateTime('join_date');
+            $table->dateTime('terakhir_login')->nullable();
             $table->timestamps();
         });
     }
