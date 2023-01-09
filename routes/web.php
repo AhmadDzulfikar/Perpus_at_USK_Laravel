@@ -4,8 +4,10 @@ use App\Models\Buku;
 use App\Models\Kategori;
 use App\Models\Pemberitahuan;
 use App\Models\Peminjaman;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -89,21 +91,16 @@ Route::prefix('user')->group(function(){
     })->name('user.form_peminjaman_dashboard');
 
     Route::post('submit_peminjaman', function(Request $request){
-        $tgl_peminjaman = $request->tgl_peminjaman;
-        $buku_id = $request->buku_id;
-        $kondisi_buku_saat_dipinjam = $request->kondisi_buku_saat_dipinjam;
-
-        $peminjaman = Peminjaman::create([
-            "tgl_peminjaman" => $tgl_peminjaman,
-            "buku_id" => $buku_id,
-            "kondisi_buku_saat_dipinjam" =>$kondisi_buku_saat_dipinjam,
-            "user_id" => Auth::user()->id    
-        ]);
+        $peminjaman = Peminjaman::create($request->all());
 
         if($peminjaman){
-            return redirect()->route("user.peminjaman");
+            return redirect()->route("user.peminjaman")
+                ->with("status", "success")
+                ->with("message", "Berhasil Menambah Data");
         }
-        return redirect()->back();
+        return redirect()->back()
+            ->with("status", "danger")
+            ->with("message", "Gagal menambah data");
     })->name('user.submit_peminjaman');
 
     Route::get('/pengembalian', function(){
@@ -115,7 +112,20 @@ Route::prefix('user')->group(function(){
     })->name('user.pesan');
 
     Route::get('/profile', function(){
-        return view('user.profile');
-    })->name('user.profile');
+        return view('user.profil');
+    })->name('user.profil');
+
+    Route::put('profile', function(Request $request){
+        $user = User::find(Auth::user()->id)->update($request->all());
+        $user2 = User::find(Auth::user()->id)->update([
+            "password" => Hash::make($request->password)
+        ]);
+
+        if($user && $user2) {
+            return redirect()->back()->with("status", "success")->with('message', 
+            'Berhasil mengubah profile');
+        }
+            return redirect()->back()->with("status", "danger")->with('message', 'Gagal mengubah profile');
+    })->name('user.profil.update');
     
 });

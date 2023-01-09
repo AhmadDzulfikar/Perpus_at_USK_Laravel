@@ -4,7 +4,13 @@
     <div class="row">
         <div class="col-2">
             @include('components.user.sidebar')
+            
         </div>
+        @if (session('status'))
+            <div class="alert alert-{{ session('status') }}">
+                {{ session('message') }}
+            </div>
+        @endif
         <div class="col-10">
             <div class="row">
                 <div class="col-9">
