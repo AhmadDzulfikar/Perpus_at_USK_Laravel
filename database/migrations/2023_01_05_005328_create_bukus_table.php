@@ -15,14 +15,15 @@ class CreateBukusTable extends Migration
     {
         Schema::create('bukus', function (Blueprint $table) {
             $table->id();
-            $table->string('judul');
-            $table->foreignId('kategori_id')->constrained();
-            $table->foreignId('penerbit_id')->constrained();
-            $table->string('pengarang');
+            $table->string('judul',125);
+            $table->foreignId('kategori_id',11)->constrained();
+            $table->foreignId('penerbit_id',11)->constrained();
+            $table->string('pengarang',125);
             $table->char('tahun_terbit',4);
             $table->string('isbn',50)->nullable();
             $table->integer('j_buku_baik');
             $table->integer('j_buku_rusak');
+            $table->text('foto')->nullable();
             $table->timestamps();
         });
     }

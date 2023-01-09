@@ -15,8 +15,8 @@ class CreatePemberitahuansTable extends Migration
     {
         Schema::create('pemberitahuans', function (Blueprint $table) {
             $table->id();
-            $table->text('isi_pemberitahuan');
-            $table->string('level_user');
+            $table->text('isi');
+            $table->string('level_user',125)->nullable();
             $table->enum('status', ['aktif', 'nonaktif']);
             $table->timestamps();
         });

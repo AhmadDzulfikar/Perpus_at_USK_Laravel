@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class buku extends Model
+class Buku extends Model
 {
     use HasFactory;
 
@@ -17,11 +17,19 @@ class buku extends Model
         'tahun_terbit',          
         'isbn',                     
         'j_buku_baik',
-        'j_buku_rusak'
+        'j_buku_rusak',
+        'foto'
     ];
 
-    public function kategori_id()
+    public function kategori()
     {
-        return $this->belongsTo(Kategori::class,'kategori_id','id');
+        return $this->belongsTo(Kategori::class);
     }
+
+    public function penerbit()
+    {
+        return $this->belongsTo(Penerbit::class);
+    }
+
+    
 }

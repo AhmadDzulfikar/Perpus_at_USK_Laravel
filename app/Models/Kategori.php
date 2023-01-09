@@ -12,7 +12,7 @@ class Kategori extends Model
     protected $fillable = [
         'kode',
         'nama',
-        'verif'
+        // 'verif'
     ];
 
     public function bukus() {
