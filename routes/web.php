@@ -116,9 +116,17 @@ Route::prefix('user')->group(function(){
     })->name('user.profil');
 
     Route::put('profile', function(Request $request){
+        $id = Auth::user()->id;
+
+        $imageName = time().'.'.$request->foto->extension();
+
+        $request->foto->move(public_path('img'), $imageName);
+
         $user = User::find(Auth::user()->id)->update($request->all());
-        $user2 = User::find(Auth::user()->id)->update([
-            "password" => Hash::make($request->password)
+
+        $user2 = User::find($id)->update([
+            "password" => Hash::make($request->password),
+            "foto" => "/img/" . $imageName
         ]);
 
         if($user && $user2) {

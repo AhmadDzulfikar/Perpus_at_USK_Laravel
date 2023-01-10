@@ -11,7 +11,7 @@
                     {{ session('message') }}
                 </div>
             @endif
-            <form action="{{ route('user.profil.update') }}" method="POST">
+            <form action="{{ route('user.profil.update') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
                 <div class="card">
@@ -23,7 +23,7 @@
                             <tr>
                                 <th>Foto</th>
                                 <td>
-
+                                    <input type="file" class="form-control" name="foto">
                                 </td>
                             </tr>
                             <tr>
