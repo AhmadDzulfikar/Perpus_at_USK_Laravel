@@ -15,12 +15,12 @@ class CreatePesansTable extends Migration
     {
         Schema::create('pesans', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('penerima_id',11)->constrained('users');
-            $table->foreignId('pengirim_id',11)->constrained('users');
-            $table->string('judul_pesan',50);
+            $table->foreignId('penerima_id')->constrained('users');
+            $table->foreignId('pengirim_id')->constrained('users');
+            $table->string('judul',50);
             $table->text('isi');
             $table->enum('status', ['terkirim', 'dibaca']);
-            $table->dateTime('tgl_kirim');
+            $table->date('tgl_kirim');
             $table->timestamps();
         });
     }

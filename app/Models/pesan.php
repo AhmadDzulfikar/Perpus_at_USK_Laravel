@@ -15,6 +15,10 @@ class Pesan extends Model
         'judul',
         'isi',
         'status',
-        'tanggal_kirim',
+        'tgl_kirim',
     ];
+
+    public function users(){
+        return $this->belongsTo(User::class);
+    }
 }

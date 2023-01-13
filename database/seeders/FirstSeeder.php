@@ -176,7 +176,7 @@ class FirstSeeder extends Seeder
         Pesan::create([
             'penerima_id' => '2',
             'pengirim_id' => '1',
-            'judul_pesan' => 'Buku Dipinjam',
+            'judul' => 'Buku Dipinjam',
             'isi' => 'Buku sedang dipinjam, harap dikembalikan tanggal 30',
             'status' => 'terkirim',
             'tgl_kirim' => '2023-01-21',
@@ -185,7 +185,7 @@ class FirstSeeder extends Seeder
         Pesan::create([
             'penerima_id' => '3',
             'pengirim_id' => '1',
-            'judul_pesan' => 'Buku terlah dipinjam',
+            'judul' => 'Buku terlah dipinjam',
             'isi' => 'Terimakasih telah meminjam buku diperpus',
             'status' => 'terkirim',
             'tgl_kirim' => '2023-01-21',
@@ -194,7 +194,7 @@ class FirstSeeder extends Seeder
         Pesan::create([
             'penerima_id' => '2',
             'pengirim_id' => '1',
-            'judul_pesan' => 'Anda merusakan buku',
+            'judul' => 'Anda merusakan buku',
             'isi' => 'Anda kena denda 10000',
             'status' => 'dibaca',
             'tgl_kirim' => '2023-01-16',
@@ -225,22 +225,6 @@ class FirstSeeder extends Seeder
             'alamat_app' => 'JL. SMEAN 6, Cawang, Kramat Jati',
             'email_app'    => 'Diana12@gmail.com',
             'nomor_hp'    => '82918298493',
-            'foto' => '',
-        ]);
-
-        identitas::create([
-            'nama_app'    => 'PERPUS SMKN 30 JAKARTA',
-            'alamat_app' => 'JL. SMEAN 6, Cawang, Kramat Jati',
-            'email_app'    => 'Zana019@gmail.com',
-            'nomor_hp'    => '182828',
-            'foto' => '',
-        ]);
-
-        identitas::create([
-            'nama_app'    => 'PERPUS SMA 8 JAKARTA',
-            'alamat_app' => 'JL. SMEAN 6, Cawang, Kramat Jati',
-            'email_app'    => 'Sisil41@gmail.com',
-            'nomor_hp'    => '28918921',
             'foto' => '',
         ]);
     }
