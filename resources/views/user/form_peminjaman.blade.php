@@ -1,8 +1,8 @@
-@extends('layouts.app')
+@extends('components.user.sidebar')
 
-@section('content')
+@section('main')
     <div class="container">
-        @include('components.user.sidebar')
+        {{-- @include('components.user.sidebar') --}}
 
         <div class="card">
             <div class="card-header">

@@ -1,11 +1,8 @@
-@extends('layouts.app')
+@extends('components.user.sidebar')
 
-@section('content')
+@section('main')
     <div class="row">
-        <div class="col-2">
-            @include('components.user.sidebar')
-        </div>
-        <div class="col-8">
+        {{-- <div class="col-8"> --}}
             @if (session('status'))
                 <div class="alert alert-{{ session('status') }}" role="alert">
                     {{ session('message') }}
@@ -82,5 +79,5 @@
                     </div>
                 </div>
             </form>
-        </div>
+        {{-- </div> --}}
     @endsection

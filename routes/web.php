@@ -34,36 +34,6 @@ Route::prefix('/admin')->group(function(){
         return view('admin.dashboard');
     })->name('admin.dashboard');
 });
-//         $pemberitahuans = Pemberitahuan::where('status', 'aktif')->get();
-
-//         $bukus = Buku::all();
-
-//         return view('admin.dashboard', compact("pemberitahuans", "bukus"));
-//     })->name('admin.dashboard');
-
-//     Route::get('/peminjaman', function(){
-//         $peminjamans = Peminjaman::where('user_id', Auth::user()->id)->get();
-//         return view('admin.peminjaman', compact('peminjamans'));
-//     })->name('admin.peminjaman');
-
-//     Route::get('/peminjaman/form', function(){
-//         $peminjamans = Peminjaman::where('user_id', Auth::user()->id)->get();
-//         return view('admin.form_peminjaman', compact('peminjamans'));
-//     })->name('admin.form_peminjaman');
-
-//     Route::get('/pengembalian', function(){
-//         return view('admin.pengembalian');
-//     })->name('admin.pengembalian');
-
-//     Route::get('/pesan', function(){
-//         return view('admin.pesan');
-//     })->name('admin.pesan');
-
-//     Route::get('/profile', function(){
-//         return view('admin.profile');
-//     })->name('admin.profile');
-    
-// });
 
 Route::prefix('user')->group(function(){
     Route::get('/dashboard', function(){

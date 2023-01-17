@@ -1,17 +1,16 @@
-@extends('layouts.app')
+@extends('components.user.sidebar')
 
-@section('content')
-    <div class="row">
-        <div class="col-2">
+@section('main')`
+        {{-- <div class="col-2">
             @include('components.user.sidebar')
             
-        </div>
+        </div> --}}
         @if (session('status'))
             <div class="alert alert-{{ session('status') }}">
                 {{ session('message') }}
             </div>
         @endif
-        <div class="col-10">
+        {{-- <div class="col-10"> --}}
             <div class="row">
                 <div class="col-9">
                     <h1>Buku yang sedang dipinjam</h1>
@@ -43,8 +42,7 @@
                         @endforeach
                     </tbody>
                 </table>
-            </div>
-        </div>
+            {{-- </div> --}}
     </div>
 @endsection
 

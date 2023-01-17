@@ -44,7 +44,7 @@ class FirstSeeder extends Seeder
             // 'nis'    => '',
             'fullname'    => 'Zuanu Silamndra',
             'username' => 'Zuan',
-            'password'    => Hash::make("12345678"),
+            'password'    => Hash::make("password"),
             // 'kelas'    => '',
             // 'alamat' => '',
             // 'verif'    => '',
@@ -110,6 +110,18 @@ class FirstSeeder extends Seeder
             'kategori_id' => '1',
             'penerbit_id' => '1',
             'pengarang' => 'Johannes',
+            'tahun_terbit' => '2017',
+            // 'isbn' => '',
+            'j_buku_baik' => '12',
+            'j_buku_rusak' => '4',
+            'foto' => '',
+        ]);
+
+        Buku::create([
+            'judul' => 'Jago ngoding dalam 5 menit',
+            'kategori_id' => '1',
+            'penerbit_id' => '1',
+            'pengarang' => 'Nur ali',
             'tahun_terbit' => '2017',
             // 'isbn' => '',
             'j_buku_baik' => '12',
@@ -224,7 +236,7 @@ class FirstSeeder extends Seeder
             'nama_app'    => 'PERPUS SMKN 10 JAKARTA',
             'alamat_app' => 'JL. SMEAN 6, Cawang, Kramat Jati',
             'email_app'    => 'Diana12@gmail.com',
-            'nomor_hp'    => '82918298493',
+            'nomor_hp'    => '82918298493d',
             'foto' => '',
         ]);
     }
