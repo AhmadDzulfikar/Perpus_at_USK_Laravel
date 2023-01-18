@@ -1,6 +1,6 @@
 @extends('components.user.sidebar')
 
-@section('main')`
+@section('main')
         {{-- <div class="col-2">
             @include('components.user.sidebar')
             
@@ -45,39 +45,3 @@
             {{-- </div> --}}
     </div>
 @endsection
-
-
-    {{-- <div class="row">
-        <div class="col">
-            <h1>Buku yang sedang dipinjam</h1>
-        </div>
-    </div>
-
-    <div class="col">
-
-    </div>
-
-    <div class="container">
-        <h1>Buku yang sedang dipinjam</h1>
-        <a href="" class="btn btn-primary"></a>
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>No</th>
-                    <th>Judul Buku</th>
-                    <th>Tanggal Peminjaman</th>
-                    <th>Kondisi Buku</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach ($peminjaman as $key => $p)
-                <tr>
-                    <td>{{ $key + 1 }}</td>
-                    <td>{{ $p->buku->judul }}</td>
-                    <td>{{ $p->tanggal_peminjaman }}</td>
-                    <td>{{ $p->kondisi_buku_saat_dipinjam }}</td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-@endsection --}}

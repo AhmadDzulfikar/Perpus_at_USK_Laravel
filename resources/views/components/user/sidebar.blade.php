@@ -263,16 +263,21 @@
                             </li>
 
                             <li class="sidebar-item  has-sub">
-                                <a href="#" class='sidebar-link'>
+                                <a href="" class='sidebar-link'>
                                     <i class="bi bi-collection-fill"></i>
                                     <span>Pengembalian Buku</span>
                                 </a>
                                 <ul class="submenu ">
-                                    <li class="submenu-item ">
-                                        <a href="extra-component-avatar.html">Formulir Pengembalian Buku</a>
+                                    {{-- <li class="submenu-item ">
+                                        <a href={{ url('/pengembalian') }}>Formulir Pengembalian Buku</a>
+                                    </li> --}}
+
+                                    <li class="submenu-item {{ request()->is('pengembalian*') ? 'active' : '' }}">
+                                        <a href={{ route('user.form_pengembalian') }}>Formulir Pengembalian Buku</a>
                                     </li>
+
                                     <li class="submenu-item ">
-                                        <a href="extra-component-sweetalert.html">Riwayat Pengembalian Buku</a>
+                                        <a href={{ route('user.pengembalian') }}>Riwayat Pengembalian Buku</a>
                                     </li>
                                 </ul>
                             </li>

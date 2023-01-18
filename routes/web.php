@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PengembalianController;
 use App\Models\Buku;
 use App\Models\Kategori;
 use App\Models\Pemberitahuan;
@@ -35,6 +36,7 @@ Route::prefix('/admin')->group(function(){
     })->name('admin.dashboard');
 });
 
+//USER
 Route::prefix('user')->group(function(){
     Route::get('/dashboard', function(){
         $pemberitahuans = Pemberitahuan::where('status', 'aktif')->get();
@@ -42,11 +44,13 @@ Route::prefix('user')->group(function(){
         return view('user.dashboard', compact("pemberitahuans", "bukus"));
     })->name('user.dashboard');
 
+//PEMINJAMAN
     Route::get('/peminjaman', function(){
         $peminjamans = Peminjaman::where('user_id', Auth::user()->id)->get();
         return view('user.peminjaman', compact('peminjamans'));
     })->name('user.peminjaman');
 
+//FORM PEMINJAMAN
     Route::get('/peminjaman/form', function(){
         $bukus = Buku::all();
 
@@ -73,14 +77,22 @@ Route::prefix('user')->group(function(){
             ->with("message", "Gagal menambah data");
     })->name('user.submit_peminjaman');
 
-    Route::get('/pengembalian', function(){
-        return view('user.pengembalian');
-    })->name('user.pengembalian');
+//PENGEMBALIAN
+    // Route::get('/pengembalian', function(){
+    //     return view('user.pengembalian');
+    // })->name('user.pengembalian');
 
+    Route::get('/pengembalian', [PengembalianController::class, 'form_pengembalian'])->name('user.form_pengembalian');
+    Route::post('submit_pengembalian', [PengembalianController::class, 'submit_pengembalian'])->name('user.submit_pengembalian'); 
+    
+    Route::get('riwayat-pengembalian', [PengembalianController::class, 'riwayat_pengembalian'])->name('user.pengembalian');
+
+//PESAN
     Route::get('/pesan', function(){
         return view('user.pesan');
     })->name('user.pesan');
 
+//PROFILE
     Route::get('/profile', function(){
         return view('user.profil');
     })->name('user.profil');

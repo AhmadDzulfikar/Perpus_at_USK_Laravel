@@ -8,7 +8,7 @@ use DateTime;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class APIUserController extends Controller
+class UserApiController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -103,7 +103,7 @@ class APIUserController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, User $user, $id)
-    {
+    {       
         $user = User::findOrFail($id);
         $user->update($request->all());
         return response()->json(['msg' => 'Data updated', 'data' => $user], 200);

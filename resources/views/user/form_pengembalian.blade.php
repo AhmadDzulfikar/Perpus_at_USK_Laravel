@@ -6,36 +6,40 @@
 
         <div class="card">
             <div class="card-header">
-                <h4>Form Peminjaman</h4>
+                <h4>Form Pengembalian buku</h4>
             </div>
             <div class="card-body">
-                <form class="form-group" method="POST" action="{{ route('user.submit_peminjaman') }}">
+                <form class="form-group" method="POST" action="{{ route('user.submit_pengembalian') }}">
                     @csrf
                     <div class="mb-3">
-                        <label>Tanggal Peminjaman</label>
-                        <input type="date" class="form-control" name="tgl_peminjaman" readonly value="{{ date('Y-m-d') }}" required>
-                    </div>
-                    <div class="mb-3">
-                        <label>Pilih Buku</label>
+                        <label>Judul Buku</label>
                         <select class="form-select" name="buku_id" required>
                             <option value="" disabled selected>--PILIH OPSI--</option>
-                            @foreach ($bukus as $b)
-                                <option value="{{ $b->id }}" {{ isset($buku_id) ? 
-                                $buku_id == $b->id ? "selected" : "" : "" }}>{{ 
-                                $b->judul }}</option>
+
+                            @foreach ($judul as $b)
+                            <option value="{{ $b->buku->id }}">
+                                {{ $b->buku->judul }}</option>
                             @endforeach
                         </select>
                     </div>
                     <div class="mb-3">
+                        <label>Tanggal Pengembalian</label>
+                        <input type="date" class="form-control" name="tgl_pengembalian" value="{{ date('Y-m-d') }}" readonly>
+                    </div>
+                    
+                    <div class="mb-3">
                         <label>Kondisi Buku</label>
-                        <select class="form-select" name="kondisi_buku_saat_dipinjam" required>
+                        <select class="form-select" name="kondisi_buku_saat_dikembalikan" id="">
                             <option value="" disabled selected>--PILIH OPSI--</option>
                             <option value="baik">Baik</option>
-                            <option value="rusak">Rusak</option>
+                            <option value="rusak">Rusak (20.000)</option>
+                            <option value="hilang">Hilang (50.000)</option>
                         </select>
                     </div>
+                    
                     <input type="hidden" value="{{ Auth::user()->id }}" name="user_id">
                     <button class="btn btn-primary" type="submit">SUBMIT</button>
+                </form>
             </div>
         </div>
     @endsection

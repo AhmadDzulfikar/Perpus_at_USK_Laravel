@@ -16,12 +16,12 @@ class PeminjamanApiController extends Controller
      */
     public function index()
     {
-        // $peminjaman = Peminjaman::get();
-        // return response()->json([
-        //     'data'=> $peminjaman,
-        //     'msg'=> 'ini data peminjaman'
-        // ]);
-
+        $peminjaman = Peminjaman::get();
+        return response()->json([
+            'data'=> $peminjaman,
+            'msg'=> 'ini data peminjaman'
+        ]);
+                
         $peminjaman = Peminjaman::with('user', 'buku')->get();
         $data = [];
 

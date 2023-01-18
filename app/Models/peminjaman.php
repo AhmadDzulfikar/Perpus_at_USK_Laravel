@@ -16,8 +16,8 @@ class Peminjaman extends Model
     // ];
 
     protected $fillable = [
-        'user_id',
-        'buku_id',
+        'user_id', //nama user
+        'buku_id', //judul
         'tgl_peminjaman',
         'tgl_pengembalian',
         'kondisi_buku_saat_dipinjam',

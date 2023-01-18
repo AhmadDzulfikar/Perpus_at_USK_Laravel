@@ -55,6 +55,21 @@ Route::get('identitas', [\App\Http\Controllers\API\IdentitasApiController::class
 // Route::post('identitas', [\App\Http\Controllers\API\IdentitasApiController::class, 'store']);
 Route::post('identitas/update/{id}', [\App\Http\Controllers\API\IdentitasApiController::class, 'update']);
 
+//USER
+Route::get('user', [App\Http\Controllers\API\UserApiController::class, 'get']);
+Route::get('user/{id}', [App\Http\Controllers\API\UserApiController::class, 'get']);
+Route::post('user', [App\Http\Controllers\API\UserApiController::class, 'store_user']);
+Route::post('admin', [App\Http\Controllers\API\UserApiController::class, 'store_admin']);
+
+Route::put('user/{id}', [App\Http\Controllers\API\UserApiController::class, 'update']);
+
+Route::put('admin/{id}', [App\Http\Controllers\API\UserApiController::class, 'updateAdmin']);
+Route::delete('user/{id}', [App\Http\Controllers\API\UserApiController::class, 'destroy']);
+Route::delete('admin/{id}', [App\Http\Controllers\API\UserApiController::class, 'destroyAdmin']);
+
+Route::post('user/{id}', [UserApiController::class, 'update']);
+
+
 //
 
 // (ADMIN)
