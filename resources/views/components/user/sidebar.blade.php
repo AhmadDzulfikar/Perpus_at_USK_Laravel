@@ -184,10 +184,21 @@
         <title>Vertical Navbar - Mazer Admin Dashboard</title>
 
         <link rel="stylesheet" href="/assets/css/main/app.css">
-
+        <link rel="stylesheet" href="/assets/css/main/app-dark.css">
         <link rel="shortcut icon" href="/assets/images/logo/favicon.svg" type="image/x-icon">
         <link rel="shortcut icon" href="/assets/images/logo/favicon.png" type="image/png">
+
+        <link rel="stylesheet" href="/assets/css/pages/simple-datatables.css">
     </head>
+
+    @php
+
+    use App\Models\Pesan;
+    $pesan = Pesan::where('penerima_id', Auth::user()->id)
+    ->where('status', 'terkirim')
+    ->get();
+
+    @endphp
 
     <body>
         <div id="app">
@@ -282,16 +293,30 @@
                                 </ul>
                             </li>
 
-                            <li class="sidebar-item  ">
-                                <a href="form-layout.html" class='sidebar-link'>
+                            <li class="sidebar-item  has-sub">
+                                <a href="" class='sidebar-link'>
                                     <i class="bi bi-file-earmark-medical-fill"></i>
                                     <span>Pesan</span>
                                 </a>
+                                <ul class="submenu ">
+                                    <li class="submenu-item {{ request()->is('pengembalian*') ? 'active' : '' }}">
+                                        <a href={{ route('user.pesan_masuk') }}>Pesan Masuk
+                                            <span
+                                                class="badge bg-light-danger badge-pill badge-round float-right mt-50">
+                                                {{ count($pesan) }}
+                                            </span>
+                                        </a>
+                                    </li>
+
+                                    <li class="submenu-item ">
+                                        <a href={{ route('user.pesan_terkirim') }}>Pesan Terkirim</a>
+                                    </li>
+                                </ul>
                             </li>
 
                             <li class="sidebar-item  ">
                                 <a href="{{ route('user.profil') }}" class='sidebar-link'>
-                                    <i class="bi bi-file-earmark-medical-fill"></i>
+                                    <i class="bi bi-person-workspace"></i>
                                     <span>Profile Saya </span>
                                 </a>
                             </li>
@@ -319,7 +344,8 @@
                                     <span>Logout</span>
                                 </a>
 
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                    class="d-none">
                                     @csrf
                                 </form>
                             </li>
@@ -349,36 +375,69 @@
                                         </a>
                                         <ul class="dropdown-menu dropdown-menu-end"
                                             aria-labelledby="dropdownMenuButton">
+                                            @php
+                                                $pesan = \App\Models\Pesan::where('status', 'terkirim')
+                                                    ->where('pengirim_id', '!=', Auth::user()->id)
+                                                    ->where('penerima_id', Auth::user()->id)
+                                                    ->orderBy('created_at', 'desc')
+                                                    ->get();
+                                            @endphp
                                             <li>
                                                 <h6 class="dropdown-header">Mail</h6>
                                             </li>
-                                            <li><a class="dropdown-item" href="#">No new mail</a></li>
+                                            @foreach ($pesan as $p)
+                                                <li>
+                                                    <form action="{{ route('user.ubah_status') }}" method="POST">
+                                                        @csrf <button class="dropdown-item" type="submit"> <input
+                                                                type="hidden" name="id"
+                                                                value="{{ $p->id }}">
+                                                            <div class="row">
+                                                                <div class="col-3">
+                                                                    <div class="user-img d-flex align-items-center">
+                                                                        <div class="avatar avatar-lg"> <img
+                                                                                src="/assets/images/faces/1.jpg">
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col ms-2">
+                                                                    <p class="mb-0 font-bold">
+                                                                        {{ $p->pengirim->username }}</p>
+                                                                    <p class="mt-0 mb-0 font-thin text-sm">
+                                                                        {{ $p->isi }}</p>
+                                                                </div>
+                                                            </div>
+                                                        </button> </form>
+                                                </li>
+                                            @endforeach
                                         </ul>
                                     </li>
-                                    <li class="nav-item dropdown me-3">
-                                        <a class="nav-link active dropdown-toggle text-gray-600" href="#"
-                                            data-bs-toggle="dropdown" aria-expanded="false">
-                                            <i class='bi bi-bell bi-sub fs-4'></i>
-                                        </a>
-                                        <ul class="dropdown-menu dropdown-menu-end"
-                                            aria-labelledby="dropdownMenuButton">
-                                            <li>
-                                                <h6 class="dropdown-header">Notifications</h6>
-                                            </li>
-                                            <li><a class="dropdown-item">No notification available</a></li>
-                                        </ul>
-                                    </li>
+                                    @if (Auth::user()->role == 'admin')
+                                        <li class="nav-item dropdown me-3">
+                                            <a class="nav-link active dropdown-toggle text-gray-600" href="#"
+                                                data-bs-toggle="dropdown" aria-expanded="false">
+                                                <i class='bi bi-bell bi-sub fs-4'></i>
+                                            </a>
+
+                                            <ul class="dropdown-menu dropdown-menu-end"
+                                                aria-labelledby="dropdownMenuButton">
+                                                <li>
+                                                    <h6 class="dropdown-header">Notifications</h6>
+                                                </li>
+                                                <li><a class="dropdown-item">No notification available</a></li>
+                                            </ul>
+                                        </li>
+                                    @endif
                                 </ul>
                                 <div class="dropdown">
                                     <a href="#" data-bs-toggle="dropdown" aria-expanded="false">
                                         <div class="user-menu d-flex">
                                             <div class="user-name text-end me-3">
-                                                <h6 class="mb-0 text-gray-600">John Ducky</h6>
-                                                <p class="mb-0 text-sm text-gray-600">Administrator</p>
+                                                <h6 class="mb-0 text-gray-600">{{ Auth::user()->username }}</h6>
+                                                <p class="mb-0 text-sm text-gray-600">{{ Auth::user()->role }}</p>
                                             </div>
                                             <div class="user-img d-flex align-items-center">
                                                 <div class="avatar avatar-md">
-                                                    <img src="assets/images/faces/1.jpg">
+                                                    <img src="/assets/images/faces/1.jpg">
                                                 </div>
                                             </div>
                                         </div>
@@ -418,7 +477,7 @@
                 </header>
                 @yield('main')
             </div>
-            
+
         </div>
         <script src="/assets/js/app.js"></script>
 

@@ -15,18 +15,18 @@
                         <label>Judul Buku</label>
                         <select class="form-select" name="buku_id" required>
                             <option value="" disabled selected>--PILIH OPSI--</option>
-
                             @foreach ($judul as $b)
-                            <option value="{{ $b->buku->id }}">
-                                {{ $b->buku->judul }}</option>
+                                <option value="{{ $b->buku->id }}">
+                                    {{ $b->buku->judul }}</option>
                             @endforeach
                         </select>
                     </div>
                     <div class="mb-3">
                         <label>Tanggal Pengembalian</label>
-                        <input type="date" class="form-control" name="tgl_pengembalian" value="{{ date('Y-m-d') }}" readonly>
+                        <input type="date" class="form-control" name="tgl_pengembalian" value="{{ date('Y-m-d') }}"
+                            readonly>
                     </div>
-                    
+
                     <div class="mb-3">
                         <label>Kondisi Buku</label>
                         <select class="form-select" name="kondisi_buku_saat_dikembalikan" id="">
@@ -36,9 +36,10 @@
                             <option value="hilang">Hilang (50.000)</option>
                         </select>
                     </div>
-                    
-                    <input type="hidden" value="{{ Auth::user()->id }}" name="user_id">
-                    <button class="btn btn-primary" type="submit">SUBMIT</button>
+                    <div class="row mt-3">
+                        <input type="hidden" value="{{ Auth::user()->id }}" name="user_id">
+                        <button class="btn btn-primary" type="submit">S U B M I T</button>
+                    </div>
                 </form>
             </div>
         </div>

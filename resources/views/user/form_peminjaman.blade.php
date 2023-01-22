@@ -1,9 +1,11 @@
 @extends('components.user.sidebar')
 
 @section('main')
-    <div class="container">
-        {{-- @include('components.user.sidebar') --}}
-
+        @if (session('status'))
+            <div class="alert alert-{{ session('status') }}">
+                {{ session('message') }}
+            </div>
+        @endif
         <div class="card">
             <div class="card-header">
                 <h4>Form Peminjaman</h4>
@@ -12,19 +14,25 @@
                 <form class="form-group" method="POST" action="{{ route('user.submit_peminjaman') }}">
                     @csrf
                     <div class="mb-3">
-                        <label>Tanggal Peminjaman</label>
-                        <input type="date" class="form-control" name="tgl_peminjaman" readonly value="{{ date('Y-m-d') }}" required>
+                        <label>Nama</label>
+                        <input class="form-control" name="user_id" readonly value="{{ Auth::user()->username }}"
+                            required>
                     </div>
                     <div class="mb-3">
                         <label>Pilih Buku</label>
                         <select class="form-select" name="buku_id" required>
                             <option value="" disabled selected>--PILIH OPSI--</option>
                             @foreach ($bukus as $b)
-                                <option value="{{ $b->id }}" {{ isset($buku_id) ? 
-                                $buku_id == $b->id ? "selected" : "" : "" }}>{{ 
-                                $b->judul }}</option>
+                                <option value="{{ $b->id }}"
+                                    {{ isset($buku_id) ? ($buku_id == $b->id ? 'selected' : '') : '' }}>
+                                    {{ $b->judul }}</option>
                             @endforeach
                         </select>
+                    </div>
+                    <div class="mb-3">
+                        <label>Tanggal Peminjaman</label>
+                        <input type="date" class="form-control" name="tgl_peminjaman" readonly value="{{ date('Y-m-d') }}"
+                            required>
                     </div>
                     <div class="mb-3">
                         <label>Kondisi Buku</label>
@@ -34,8 +42,10 @@
                             <option value="rusak">Rusak</option>
                         </select>
                     </div>
-                    <input type="hidden" value="{{ Auth::user()->id }}" name="user_id">
-                    <button class="btn btn-primary" type="submit">SUBMIT</button>
+                    <div class="row mt-3">
+                        <input type="hidden" value="{{ Auth::user()->id }}" name="user_id">
+                        <button class="btn btn-primary" type="submit">S U B M I T</button>
+                    </div>
             </div>
         </div>
     @endsection

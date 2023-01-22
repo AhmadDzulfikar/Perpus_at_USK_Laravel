@@ -25,7 +25,7 @@ class FirstSeeder extends Seeder
     {
         //USER
         User::Create([
-            'kode' => 'A1',
+            'kode' => 'AA001',
             // 'nis'    => '203910',
             'fullname'    => 'Zikri Ramdhan',
             'username' => 'Zikri',
@@ -40,7 +40,7 @@ class FirstSeeder extends Seeder
         ]);
 
         User::Create([
-            'kode' => 'A2',
+            'kode' => 'AA002',
             // 'nis'    => '',
             'fullname'    => 'Zuanu Silamndra',
             'username' => 'Zuan',
@@ -55,17 +55,32 @@ class FirstSeeder extends Seeder
         ]);
 
         User::Create([
-            'kode' => '',
+            'kode' => 'AA003',
             // 'nis'    => '',
-            'fullname'    => '',
-            'username' => '',
-            'password'    => Hash::make("12345678"),
+            'fullname'    => 'Keanu Cifsar',
+            'username' => 'Kean',
+            'password'    => Hash::make("password"),
             // 'kelas'    => '',
             // 'alamat' => '',
             // 'verif'    => '',
             'role' => 'user',
             'join_date'    => '2023-01-06',
             // 'terakhir_login' => '',
+            'foto' => '',
+        ]);
+
+        User::Create([
+            'kode' => 'AA004',
+            // 'nis'    => '203910',
+            'fullname'    => 'Zed_AdminPerpus',
+            'username' => 'Zed',
+            'password'    => Hash::make("password"),
+            // 'kelas'    => 'XII-RPL',
+            // 'alamat' => 'JL.BUNGA SARI',
+            // 'verif'    => '',
+            'role' => 'admin',
+            'join_date'    => '2023-01-06',
+            // 'terakhir_login' => '2023-01-06',
             'foto' => '',
         ]);
 
@@ -186,8 +201,8 @@ class FirstSeeder extends Seeder
 
         //PESAN
         Pesan::create([
-            'penerima_id' => '2',
-            'pengirim_id' => '1',
+            'penerima_id' => '1',
+            'pengirim_id' => '2',
             'judul' => 'Buku Dipinjam',
             'isi' => 'Buku sedang dipinjam, harap dikembalikan tanggal 30',
             'status' => 'terkirim',
@@ -195,9 +210,9 @@ class FirstSeeder extends Seeder
         ]);
 
         Pesan::create([
-            'penerima_id' => '3',
-            'pengirim_id' => '1',
-            'judul' => 'Buku terlah dipinjam',
+            'penerima_id' => '1',
+            'pengirim_id' => '2',
+            'judul' => 'Buku telah dipinjam',
             'isi' => 'Terimakasih telah meminjam buku diperpus',
             'status' => 'terkirim',
             'tgl_kirim' => '2023-01-21',
@@ -208,6 +223,15 @@ class FirstSeeder extends Seeder
             'pengirim_id' => '1',
             'judul' => 'Anda merusakan buku',
             'isi' => 'Anda kena denda 10000',
+            'status' => 'dibaca',
+            'tgl_kirim' => '2023-01-16',
+        ]);
+
+        Pesan::create([
+            'penerima_id' => '2',
+            'pengirim_id' => '4',
+            'judul' => 'Congratullations!!!',
+            'isi' => 'You already read 15 book in a month, go to library to take your rewards!',
             'status' => 'dibaca',
             'tgl_kirim' => '2023-01-16',
         ]);

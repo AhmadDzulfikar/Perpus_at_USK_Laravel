@@ -35,7 +35,7 @@ Route::delete('kategori/delete/{id}', [App\Http\Controllers\API\KategoriApiContr
 //Pesan
 Route::get('pesan', [App\Http\Controllers\API\PesanApiController::class, 'index']);
 Route::post('pesan', [App\Http\Controllers\API\PesanApiController::class, 'store']);
-// Route::post('pesan/update/{id}', [\App\Http\Controllers\API\PesanApiController::class, 'update']);
+Route::post('pesan/update/{id}', [\App\Http\Controllers\API\PesanApiController::class, 'update']);
 Route::delete('pesan/delete/{id}', [\App\Http\Controllers\API\PesanApiController::class, 'destroy']);
 
 //Buku

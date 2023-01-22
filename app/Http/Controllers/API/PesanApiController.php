@@ -39,23 +39,23 @@ class PesanApiController extends Controller
         ], 200);
     }
 
-    // public function update(Request $request, $id)
-    // {
-    //     $pesan = Pesan::findOrFail($id);
+    public function update(Request $request, $id)
+    {
+        $pesan = Pesan::findOrFail($id);
 
-    //     $pesan->update([
-    //         'penerima_id' => $request->penerima_id,
-    //         'pengirim_id' => $request->pengirim_id,
-    //         'judul' => $request->judul,
-    //         'isi' => $request->isi,
-    //         'status' => $request->status,
-    //         'tgl_kirim' => $request->tgl_kirim
-    //     ]);
+        $pesan->update([
+            'penerima_id' => $request->penerima_id,
+            'pengirim_id' => $request->pengirim_id,
+            'judul' => $request->judul,
+            'isi' => $request->isi,
+            'status' => $request->status,
+            'tgl_kirim' => $request->tgl_kirim
+        ]);
 
-    //     return response()->json([
-    //         'msg'=> 'pesan berhasil di edit',
-    //     ]);
-    // }
+        return response()->json([
+            'msg'=> 'pesan berhasil di edit',
+        ]);
+    }
 
     public function destroy($id)
     {

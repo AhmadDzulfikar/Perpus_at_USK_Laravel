@@ -15,7 +15,7 @@ class CreatePeminjamansTable extends Migration
     {
         Schema::create('peminjamans', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id');
+            $table->foreignId('user_id')->constrained();
             $table->foreignId('buku_id')->constrained();
             $table->date('tgl_peminjaman');
             $table->date('tgl_pengembalian')->nullable();

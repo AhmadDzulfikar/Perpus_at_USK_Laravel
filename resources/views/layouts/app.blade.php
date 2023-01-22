@@ -87,3 +87,17 @@
 </body>
 
 </html>
+
+{{-- <!DOCTYPE html>
+    <html lang="en">
+
+    <head>
+        <link rel="stylesheet" href="/assets/css/pages/simple-datatables.css">
+    </head>
+
+    <body>
+        <script src="assets/js/app.js"></script>
+        <script src="/assets/js/extensions/simple-datatables.js"></script>
+    </body>
+
+    </html> --}}
