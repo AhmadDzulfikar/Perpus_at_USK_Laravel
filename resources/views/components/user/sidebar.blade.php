@@ -192,12 +192,11 @@
     </head>
 
     @php
-
-    use App\Models\Pesan;
-    $pesan = Pesan::where('penerima_id', Auth::user()->id)
-    ->where('status', 'terkirim')
-    ->get();
-
+        
+        use App\Models\Pesan;
+        $pesan = Pesan::where('penerima_id', Auth::user()->id)
+            ->where('status', 'terkirim')
+            ->get();
     @endphp
 
     <body>
@@ -409,6 +408,13 @@
                                                         </button> </form>
                                                 </li>
                                             @endforeach
+
+                                            @if (count($pesan) == 0)
+                                                <li><a class="dropdown-item" href="#">
+                                                        No New Mail
+                                                    </a>
+                                                </li>
+                                            @endif
                                         </ul>
                                     </li>
                                     @if (Auth::user()->role == 'admin')

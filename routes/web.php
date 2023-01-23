@@ -13,6 +13,9 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Route;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
+//Admin
+use App\Http\Controllers\admin\AnggotaController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -39,7 +42,11 @@ Route::prefix('/admin')->group(function(){
 });
 
 //ADMIN
-// Route::get('/dashboard', [App\Http\Controllers\Admin\DashboardController::class], 'index')->name('admin.dashboard');
+//MasterData
+//Data Anggota
+Route::get('/anggota', [AnggotaController::class, 'anggota'])->name('admin.anggota');
+Route::post('/store-anggota', [AnggotaController::class, 'storeAnggota'])->name('admin.tambah_anggota');   
+Route::delete('/delete-anggota', [AnggotaController::class, 'hapusAnggota'])->name('admin.hapus.anggota');   
 
 //USER
 Route::prefix('user')->group(function(){

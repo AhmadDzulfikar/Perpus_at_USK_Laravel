@@ -14,10 +14,6 @@
     <section class="section">
         <div class="card">
             <div class="card-body">
-                {{-- <div class="col-3">
-                    <a href="{{ route('user.form_peminjaman') }}" class="btn btn-primary float"><i class="bi bi-send"></i>
-                        Kirim Pesan</a>
-                </div> --}}
                 <button type="button" class="btn shadow btn-primary mb-3" data-bs-toggle="modal"
                     data-bs-target="#exampleModal"><i class="bi bi-send"></i>
                     Kirim Pesan

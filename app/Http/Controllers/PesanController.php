@@ -37,11 +37,6 @@ class PesanController extends Controller
                 'terkirim'=> $notif->terkirim + 1
             ]);
         }
-        // if ($request->kondisi_buku_saat_dipinjam == 'rusak') {
-        //     $notif->update([
-        //         'j_buku_rusak'=> $notif->j_buku_rusak - 1
-        //     ]);
-        // }
 
         return view('user.pesan_masuk', compact('masuk'));
     }

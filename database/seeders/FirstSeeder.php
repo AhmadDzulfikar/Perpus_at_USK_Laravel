@@ -25,11 +25,11 @@ class FirstSeeder extends Seeder
     {
         //USER
         User::Create([
-            'kode' => 'AA001',
+            'kode' => 'Admin1',
             // 'nis'    => '203910',
             'fullname'    => 'Zikri Ramdhan',
             'username' => 'Zikri',
-            'password'    => Hash::make("12345678"),
+            'password'    => Hash::make("password"),
             // 'kelas'    => 'XII-RPL',
             // 'alamat' => 'JL.BUNGA SARI',
             // 'verif'    => '',
@@ -40,13 +40,13 @@ class FirstSeeder extends Seeder
         ]);
 
         User::Create([
-            'kode' => 'AA002',
-            // 'nis'    => '',
+            'kode' => 'AA001',
+            'nis'    => '0056378',
             'fullname'    => 'Zuanu Silamndra',
             'username' => 'Zuan',
             'password'    => Hash::make("password"),
-            // 'kelas'    => '',
-            // 'alamat' => '',
+            'kelas'    => 'XII - RPL',
+            'alamat' => 'JL. Manunggal IX No. 98',
             // 'verif'    => '',
             'role' => 'user',
             'join_date'    => '2023-01-06',
@@ -55,13 +55,13 @@ class FirstSeeder extends Seeder
         ]);
 
         User::Create([
-            'kode' => 'AA003',
-            // 'nis'    => '',
+            'kode' => 'AA002',
+            'nis'    => '0054238',
             'fullname'    => 'Keanu Cifsar',
             'username' => 'Kean',
             'password'    => Hash::make("password"),
-            // 'kelas'    => '',
-            // 'alamat' => '',
+            'kelas'    => 'XII - AKL 1',
+            'alamat' => 'Jl. Kewangi Munggang',
             // 'verif'    => '',
             'role' => 'user',
             'join_date'    => '2023-01-06',
@@ -70,7 +70,7 @@ class FirstSeeder extends Seeder
         ]);
 
         User::Create([
-            'kode' => 'AA004',
+            'kode' => 'Admin2',
             // 'nis'    => '203910',
             'fullname'    => 'Zed_AdminPerpus',
             'username' => 'Zed',
