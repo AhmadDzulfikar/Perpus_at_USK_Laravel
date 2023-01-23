@@ -91,17 +91,27 @@ class AnggotaController extends Controller
      */
     public function hapusAnggota($id)
     {
-        $anggota = User::where('id', $id)->first();
+        $anggota = User::find($id);
+        $anggota->delete();
+        
+        return redirect()->back();
+        // if ($anggota) {
+        //     return redirect()->route('admin.anggota')->with('status', 'success')->with('message', 'Berhasil Menghapus Anggota');
+        // }
 
-        if ($anggota != null) {
-            $anggota->delete();
-            return redirect()
-                ->back()
-                ->with("status", "success")
-                ->with("message", "Berhasil Menghapus Data");
-        }
-        return redirect()->back()
-            ->with("status", "danger")
-            ->with("message", "Gagal Menghapus data");
+        // return redirect()->route('admin.anggota')->with('status', 'danger')->with('message', 'Gagal Menghapus Anggota');
+        
+        // $anggota = User::where('id', $id)->first();
+
+        // if ($anggota != null) {
+        //     $anggota->delete();
+            
+        //     return redirect()->back();
+        //         // ->with("status", "success")
+        //         // ->with("message", "Berhasil Menghapus Data");
+        // }
+        // return redirect()->back()
+        //     ->with("status", "danger")
+        //     ->with("message", "Gagal Menghapus data");
     }
 }

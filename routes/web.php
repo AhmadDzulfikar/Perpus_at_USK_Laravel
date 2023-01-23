@@ -46,7 +46,8 @@ Route::prefix('/admin')->group(function(){
 //Data Anggota
 Route::get('/anggota', [AnggotaController::class, 'anggota'])->name('admin.anggota');
 Route::post('/store-anggota', [AnggotaController::class, 'storeAnggota'])->name('admin.tambah_anggota');   
-Route::delete('/delete-anggota', [AnggotaController::class, 'hapusAnggota'])->name('admin.hapus.anggota');   
+Route::put('/anggota/update/{id}' , [AnggotaController::class, 'updateAnggota'])->name('admin.update.anggota');
+Route::delete('/anggota/delete/{id}', [AnggotaController::class, 'hapusAnggota'])->name('admin.hapus_anggota');   
 
 //USER
 Route::prefix('user')->group(function(){
