@@ -197,7 +197,7 @@
 
                                         <div class="mb-3">
                                             <label for="formGroupExampleInput" class="form-label">status</label>
-                                            <select name="verif_id" class="form-select">
+                                            <select name="verif_id" class="form-select" required>
                                                 <option value="" disabled selected>-- pilih opsion</option>
                                                 <option value="verified">verified</option>
                                                 <option value="unverified">unverified</option>
@@ -215,6 +215,7 @@
                         </div>
                     </div>
                 @endforeach
+
 
                 {{-- Modal Edit --}}
 
