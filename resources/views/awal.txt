@@ -1,3 +1,50 @@
 composer create-project --prefer-dist laravel/laravel lsp_perpus "8.*"
 
 composer require laravel/ui:^3.4.6
+
+
+UJIAN LISAN
+
+- Class adalah template untuk Object 
+- Object adalah implementasi dari Class.
+- Method adalah fungsi yang terdapat di dalam class
+
+- __construct : method yang dijalankan di awal untuk menginisialisasi properti objek ketika membuat objek.
+- __destruct : method yang dijalankan di akhir ketika script berhenti atau selesai. 
+
+- Enkapsulasi : proses pembungkusan properti atau method pada sebuah class
+- public : properti atau method yang dapat diakses dari dalam class atau luar class.
+- protected : properti atau method yang dapat diakses dari dalam class atau keturunan class tersebut.
+- private : properti atau method yang dapat diakses hanya dalam class tersebut.
+
+- abstract adalah class yang memiliki method bernama tapi membutuhkan class turunan untuk mengisi tugas dari methodnya.
+
+- interface : method yang harus diimplementasikan pada class yang menggunakan interface tersebut
+- perbedaan interface & abstract class : 
+   1. interface tidak dapat memiliki property, abstract bisa
+   2. Method interface harus public, abstract bisa public / protected
+   3. Method interface bersifat abstract, sehingga tidak perlu keyword abstract 
+   4. Class dapat menggunakan interface ketika menjadi anak dari class lain
+
+- traits : method yang dapat digunakan pada banyak class
+
+- namespaces : memberikan alamat pada suatu file sehingga dianggap sebagai satu keluarga.
+
+- static method : method yang dapat dipanggil langsung tanpa menginstasiasikan class terlebih dahulu.
+
+- static property : property yang dapat dipanggil langsung tanpa menginstasiasikan class terlebih dahulu
+
+
+- membuat data : NamaModel::create([
+'key' => 'value'
+]);
+
+- mendapatkan 1 data : NamaModel::find($id);
+
+- mendapatkan spesifik data : NamaModel::where('key', 'value')->get();
+
+- mengupdate data : NamaModel::find($id);
+$variable->update($request->all());
+
+- menghapus data : NamaModel::find($id);
+$variable->delete();

@@ -91,10 +91,14 @@ class AnggotaController extends Controller
      */
     public function hapusAnggota($id)
     {
-        $anggota = User::find($id);
+        $anggota = User::where('role' , 'user')->where('id' , $id);
         $anggota->delete();
         
         return redirect()->back();
+        // $anggota = User::find($id);
+        // $anggota->delete();
+        
+        // return redirect()->back();
         // if ($anggota) {
         //     return redirect()->route('admin.anggota')->with('status', 'success')->with('message', 'Berhasil Menghapus Anggota');
         // }
