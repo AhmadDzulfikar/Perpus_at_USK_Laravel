@@ -144,24 +144,24 @@ Route::prefix('user')->group(function(){
     })->name('user.profil');
 
     Route::put('profile', function(Request $request){
-        $id = Auth::user()->id;
+            $id = Auth::user()->id;
 
-        $imageName = time().'.'.$request->foto->extension();
+            $imageName = time().'.'.$request->foto->extension();
 
-        $request->foto->move(public_path('img'), $imageName);
+            $request->foto->move(public_path('img'), $imageName);
 
-        $user = User::find(Auth::user()->id)->update($request->all());
+            $user = User::find(Auth::user()->id)->update($request->all());
 
-        $user2 = User::find($id)->update([
-            "password" => Hash::make($request->password),
-            "foto" => "/img/" . $imageName
-        ]);
+            $user2 = User::find($id)->update([
+                "password" => Hash::make($request->password),
+                "foto" => "/img/" . $imageName
+            ]);
 
-        if($user && $user2) {
-            return redirect()->back()->with("status", "success")->with('message', 
-            'Berhasil mengubah profile');
-        }
-            return redirect()->back()->with("status", "danger")->with('message', 'Gagal mengubah profile');
+            if($user && $user2) {
+                return redirect()->back()->with("status", "success")->with('message', 
+                'Berhasil mengubah profile');
+            }
+                return redirect()->back()->with("status", "danger")->with('message', 'Gagal mengubah profile');
     })->name('user.profil.update');
     
 });

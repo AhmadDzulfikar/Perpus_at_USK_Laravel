@@ -49,73 +49,11 @@ class AnggotaController extends Controller
             ->with("message", "Gagal menambah data");
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function hapusAnggota($id)
     {
         $anggota = User::where('role' , 'user')->where('id' , $id);
         $anggota->delete();
         
         return redirect()->back();
-        // $anggota = User::find($id);
-        // $anggota->delete();
-        
-        // return redirect()->back();
-        // if ($anggota) {
-        //     return redirect()->route('admin.anggota')->with('status', 'success')->with('message', 'Berhasil Menghapus Anggota');
-        // }
-
-        // return redirect()->route('admin.anggota')->with('status', 'danger')->with('message', 'Gagal Menghapus Anggota');
-        
-        // $anggota = User::where('id', $id)->first();
-
-        // if ($anggota != null) {
-        //     $anggota->delete();
-            
-        //     return redirect()->back();
-        //         // ->with("status", "success")
-        //         // ->with("message", "Berhasil Menghapus Data");
-        // }
-        // return redirect()->back()
-        //     ->with("status", "danger")
-        //     ->with("message", "Gagal Menghapus data");
     }
 }

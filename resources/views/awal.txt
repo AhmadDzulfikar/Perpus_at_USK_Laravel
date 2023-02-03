@@ -2,6 +2,8 @@ composer create-project --prefer-dist laravel/laravel lsp_perpus "8.*"
 
 composer require laravel/ui:^3.4.6
 
+composer require maatwebsite/excel --ignore-platform-reqs
+
 
 UJIAN LISAN
 
